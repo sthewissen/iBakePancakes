@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:local="clr-namespace:iBakePancakes" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="iBakePancakes.DetailPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Image Source="{Binding ImageUrl}" Margin="0,-44,0,0" Aspect="AspectFill" Grid.ColumnSpan="2" />
+
+        <Button Grid.Column="1" Clicked="Close_Clicked" Margin="0,0,32,16"
+                FontFamily="Cooking" Text="{x:Static local:IconFont.close}"
+                VerticalOptions="Start" CornerRadius="20" HeightRequest="40"
+                WidthRequest="40" FontSize="18" TextColor="{StaticResource close_button_textcolor}"
+                BackgroundColor="{StaticResource close_button_background}" />
+
+        <yummy:PancakeView VerticalOptions="End" HeightRequest="120" Grid.ColumnSpan="2">
+            <yummy:PancakeView.BackgroundGradientStops>
+                <yummy:GradientStopCollection>
+                    <yummy:GradientStop Color="Transparent" Offset="0" />
+                    <yummy:GradientStop Color="White" Offset="1" />
+                </yummy:GradientStopCollection>
+            </yummy:PancakeView.BackgroundGradientStops>
+        </yummy:PancakeView>
+
+        <yummy:PancakeView CornerRadius="20" HeightRequest="500" VerticalOptions="EndAndExpand"
+                           Grid.RowSpan="2" BackgroundColor="{StaticResource white}" Grid.ColumnSpan="2" Margin="20,20,20,40">
+            <yummy:PancakeView.Shadow>
+                <yummy:DropShadow Color="#000000" Opacity="0.1" Offset="10,10" BlurRadius="30" />
+            </yummy:PancakeView.Shadow>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" FontSize="25" FontFamily=".SFUIText-Bold"
+                       TextColor="{StaticResource details_title}" Margin="24,24,24,8" Text="{Binding Name}" />
+
+                <Label Grid.Row="1" Margin="24,8" FontSize="15"
+                       TextColor="{StaticResource description}" FontFamily="Dosis-Regular" Text="{Binding Description}" />
+
+                <Label Grid.Row="2" FontSize="19" FontFamily=".SFUIText-Bold"
+                       TextColor="{StaticResource details_title}" Margin="24,8" Text="Ingredients" />
+
+                <StackLayout Margin="24,8" Padding="12" Grid.Row="3" BackgroundColor="{StaticResource ingredient_list}" BindableLayout.ItemsSource="{Binding .Ingredients}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
+                                <Label Text="{Binding Name}" TextColor="{StaticResource ingredient_name}" FontFamily="Dosis-Bold" />
+                                <Label HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding Uom}" TextColor="{StaticResource ingredient_name}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+                <Button Grid.Row="4" HeightRequest="56" FontSize="19" FontFamily="Dosis-Bold"
+                        BackgroundColor="{StaticResource main_yellow}" TextColor="{StaticResource button_color}"
+                        VerticalOptions="End" Text="Start Cooking" />
+            </Grid>
+        </yummy:PancakeView>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:local="clr-namespace:iBakePancakes"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d" x:Class="iBakePancakes.MainPage">
+    <Grid>
+
+        <ff:SvgCachedImage Margin="0,-160,0,0" Source="resource://topshape.svg" HeightRequest="400" VerticalOptions="Start" Aspect="AspectFill" />
+
+        <CollectionView ItemsSource="{Binding .}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <Grid HeightRequest="120">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="title" Margin="32,0,16,16" Text="Cook Book" VerticalOptions="End" VerticalTextAlignment="Center" TextColor="{StaticResource app_title}" FontFamily=".SFUIText-Semibold" FontSize="34" />
+
+                    <Button x:Name="search" Grid.Column="1" Margin="0,0,32,16" FontFamily="Cooking" Text="{x:Static local:IconFont.search}" VerticalOptions="End" CornerRadius="20" HeightRequest="40" WidthRequest="40" FontSize="18" TextColor="{StaticResource app_title}" BackgroundColor="{StaticResource white}" />
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="16,0">
+                        <yummy:PancakeView CornerRadius="20">
+                            <yummy:PancakeView.Shadow>
+                                <yummy:DropShadow Color="#000000" Opacity="0.3" Offset="10,10" BlurRadius="10" />
+                            </yummy:PancakeView.Shadow>
+
+                            <Grid HeightRequest="480">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="80" />
+                                </Grid.RowDefinitions>
+
+                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" Grid.RowSpan="2" />
+
+                                <yummy:PancakeView Grid.Row="0" VerticalOptions="Start" HeightRequest="120">
+                                    <yummy:PancakeView.BackgroundGradientStops>
+                                        <yummy:GradientStopCollection>
+                                            <yummy:GradientStop Color="#CC000000" Offset="0" />
+                                            <yummy:GradientStop Color="Transparent" Offset="2" />
+                                        </yummy:GradientStopCollection>
+                                    </yummy:PancakeView.BackgroundGradientStops>
+                                </yummy:PancakeView>
+
+                                <Label Margin="16,16,0,0" FontSize="20" FontFamily=".SFUIText-Semibold" TextColor="{StaticResource white}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static local:IconFont.favorite_outline}" FontFamily="Cooking" FontSize="24" />
+                                            <Span Text=" 52" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <sharpnado:MaterialFrame Grid.Row="1" CornerRadius="0" MaterialBlurStyle="Dark" MaterialTheme="AcrylicBlur" />
+
+                                <Label Grid.Row="1" Margin="20" VerticalOptions="Center" Text="{Binding Name}" FontSize="28" FontFamily=".SFUIText-Semibold" TextColor="{StaticResource white}" />
+                            </Grid>
+
+                        </yummy:PancakeView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

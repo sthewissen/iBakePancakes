@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="iBakePancakes.App">
+    <Application.Resources>
+
+        <Color x:Key="close_button_textcolor">#8F8D8F</Color>
+        <Color x:Key="close_button_background">#DDDFE0</Color>
+        <Color x:Key="white">#FFFFFF</Color>
+        <Color x:Key="details_title">#424951</Color>
+        <!--<Color x:Key="">#FDF8D8</Color>-->
+        <Color x:Key="description">#A4A6A8</Color>
+        <Color x:Key="ingredient_list">#FAFBF8</Color>
+        <Color x:Key="app_title">#4E3000</Color>
+        <Color x:Key="ingredient_name">#6E6E6C</Color>
+        <!--<Color x:Key="">#FBFBFB</Color>-->
+        <Color x:Key="button_color">#966900</Color>
+        <Color x:Key="main_yellow">#FDDB00</Color>
+
+    </Application.Resources>
+</Application>
