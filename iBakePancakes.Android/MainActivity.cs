@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using FFImageLoading.Forms.Platform;
 
 namespace iBakePancakes.Droid
 {
@@ -19,6 +20,7 @@ namespace iBakePancakes.Droid
 
             base.OnCreate(savedInstanceState);
 
+            CachedImageRenderer.Init(true);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
